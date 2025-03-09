@@ -26,26 +26,60 @@
 
 /* Global Styles */
 body {
-  @apply bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300;
+  background: linear-gradient(to bottom, var(--background), #020c1b); /* Smooth gradient */
+  color: var(--foreground);
   font-family: var(--font-sans);
+  transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 /* Smooth Transitions */
 h1, h2, h3, p, a {
-  @apply transition-all duration-300;
+  transition: all 0.3s ease-in-out;
 }
 
 /* Styling for Links */
 a {
-  @apply text-[var(--primary)] hover:text-[var(--highlight)] transition duration-300;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: var(--highlight);
 }
 
 /* Highlighted Sections */
 .highlight {
-  @apply text-[var(--highlight)] font-bold;
+  font-weight: bold;
+  color: var(--highlight);
 }
 
 /* Button Styling */
 .button {
-  @apply px-4 py-2 rounded-md bg-[var(--primary)] text-[var(--background)] hover:bg-[var(--highlight)] transition duration-300;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background-color: var(--primary);
+  color: var(--background);
+  font-weight: bold;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--highlight);
+  transform: scale(1.05);
+}
+
+/* Background Glow Effect */
+@media (prefers-color-scheme: dark) {
+  body::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.2) 0%, transparent 80%);
+    transform: translateX(-50%);
+    z-index: -1;
+  }
 }
