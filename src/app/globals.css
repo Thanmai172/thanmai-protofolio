@@ -1,26 +1,51 @@
-@import "tailwindcss";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
+/* Import Modern Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap");
+
+/* Root Variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #64ffda; /* Green accent */
+  --secondary: #8892b0; /* Grayish-blue */
+  --highlight: #ccd6f6; /* Light text */
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Fira Code", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0a192f;
     --foreground: #ededed;
   }
 }
 
+/* Global Styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300;
+  font-family: var(--font-sans);
+}
+
+/* Smooth Transitions */
+h1, h2, h3, p, a {
+  @apply transition-all duration-300;
+}
+
+/* Styling for Links */
+a {
+  @apply text-[var(--primary)] hover:text-[var(--highlight)] transition duration-300;
+}
+
+/* Highlighted Sections */
+.highlight {
+  @apply text-[var(--highlight)] font-bold;
+}
+
+/* Button Styling */
+.button {
+  @apply px-4 py-2 rounded-md bg-[var(--primary)] text-[var(--background)] hover:bg-[var(--highlight)] transition duration-300;
 }
