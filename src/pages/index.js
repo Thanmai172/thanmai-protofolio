@@ -1,56 +1,49 @@
+import { useState } from "react";
 import Navbar from "../components/Navbar";
-import Deep from "../components/Deep";  
-import About from "../components/About";
-import Projects from "../components/Projects";
 import Footer from "../components/Footer";
-import { motion } from "framer-motion";
+import Deep from "../components/Deep";
+import Projects from "../components/Projects";
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState("deep");
+
   return (
-    <div className="relative min-h-screen text-foreground">
-      {/* Background Effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f] via-[#112240] to-[#020c1b]">
-        {/* Radial Glow */}
-        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                        w-[600px] h-[600px] bg-[#233554] opacity-30 rounded-full blur-3xl"></div>
+    <div className="relative min-h-screen text-foreground bg-background-dark flex flex-col items-center">
+      {/* Buttons for Navigation */}
+      <div className="fixed top-4 flex gap-4 bg-black/50 p-3 rounded-lg">
+        <button
+          onClick={() => setActiveSection("deep")}
+          className="px-4 py-2 rounded-md bg-primary text-background hover:bg-highlight transition"
+        >
+          Deep
+        </button>
+        <button
+          onClick={() => setActiveSection("projects")}
+          className="px-4 py-2 rounded-md bg-primary text-background hover:bg-highlight transition"
+        >
+          Projects
+        </button>
+        <button
+          onClick={() => setActiveSection("navbar")}
+          className="px-4 py-2 rounded-md bg-primary text-background hover:bg-highlight transition"
+        >
+          Navbar
+        </button>
+        <button
+          onClick={() => setActiveSection("footer")}
+          className="px-4 py-2 rounded-md bg-primary text-background hover:bg-highlight transition"
+        >
+          Footer
+        </button>
       </div>
 
-      <Navbar />
-
-      {/* Main Content */}
-      <main className="relative flex flex-col gap-16">
-        {/* Hero Section */}
-        <motion.section 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }} 
-          transition={{ duration: 1 }}
-          className="relative"
-        >
-          <Deep />
-        </motion.section>
-
-        {/* About Section */}
-        <motion.section 
-          initial={{ opacity: 0, y: 50 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 1, delay: 0.2 }}
-          className="relative"
-        >
-          <About />
-        </motion.section>
-
-        {/* Projects Section */}
-        <motion.section 
-          initial={{ opacity: 0, y: 50 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 1, delay: 0.4 }}
-          className="relative"
-        >
-          <Projects />
-        </motion.section>
+      {/* Conditionally Render Components */}
+      <main className="mt-20 w-full flex justify-center">
+        {activeSection === "deep" && <Deep />}
+        {activeSection === "projects" && <Projects />}
+        {activeSection === "navbar" && <Navbar />}
+        {activeSection === "footer" && <Footer />}
       </main>
-
-      <Footer />
     </div>
   );
 }
