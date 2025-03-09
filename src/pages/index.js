@@ -7,11 +7,14 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="bg-background min-h-screen text-foreground">
+    <div className="relative min-h-screen text-foreground">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f] to-[#020c1b]"></div>
+
       <Navbar />
-      
+
       {/* Main Content */}
-      <main className="flex flex-col gap-16">
+      <main className="relative flex flex-col gap-16">
         {/* Hero Section (Deep.js) */}
         <motion.section 
           initial={{ opacity: 0 }} 
@@ -40,7 +43,6 @@ export default function Home() {
         </motion.section>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
