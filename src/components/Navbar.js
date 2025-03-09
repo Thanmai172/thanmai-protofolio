@@ -2,12 +2,21 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="fixed w-full top-0 flex justify-between items-center p-4 bg-background text-white z-50">
+    <nav className="fixed w-full top-0 flex justify-between items-center px-8 py-4 bg-black/50 backdrop-blur-md text-white shadow-lg">
+      {/* Logo */}
       <h1 className="text-2xl font-bold text-primary">Thanmai</h1>
-      <div className="space-x-6">
-        <Link href="#about">About</Link>
-        <Link href="#projects">Projects</Link>
-        <Link href="#contact">Contact</Link>
+
+      {/* Navigation Links */}
+      <div className="flex space-x-8 text-lg font-medium">
+        <Link href="#about" className="hover:text-highlight transition">
+          About
+        </Link>
+        <Link href="#projects" className="hover:text-highlight transition">
+          Projects
+        </Link>
+        <Link href="#contact" className="hover:text-highlight transition">
+          Contact
+        </Link>
       </div>
     </nav>
   );
