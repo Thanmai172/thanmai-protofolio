@@ -1,14 +1,16 @@
-import Navbar from "../components/Navbar"; // Adjusted path
-import Deep from "../components/Deep"; // Adjusted path
-import Footer from "../components/Footer"; // Adjusted path
+import Navbar from "../components/Navbar";
+import Deep from "../components/Deep";  // ✅ Correct Import
+import About from "../components/About";
+import Projects from "../components/Projects";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="bg-background min-h-screen">
       <Navbar />
-      <main className="flex-grow">
-        <Deep />
-      </main>
+      <Deep />
+      <About />
+      <Projects />
       <Footer />
     </div>
   );
