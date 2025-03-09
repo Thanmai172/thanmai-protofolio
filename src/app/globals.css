@@ -2,10 +2,14 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Import Modern Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Fira+Code:wght@400;500&display=swap");
+
+/* Root Variables */
 :root {
   --background-light: #ffffff;
   --foreground-light: #171717;
-  --background-dark: linear-gradient(to bottom, #0a192f, #020c1b); /* Gradient */
+  --background-dark: #0a192f;
   --foreground-dark: #ededed;
   --primary: #64ffda; /* Green accent */
   --secondary: #8892b0; /* Grayish-blue */
@@ -14,14 +18,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--background-dark);
+    --background: linear-gradient(to bottom, #0a192f, #020c1b); /* Gradient */
     --foreground: var(--foreground-dark);
   }
 }
 
 body {
-  background: var(--background-dark); /* Ensures background is applied */
-  color: var(--foreground-dark);
+  background: var(--background, #0a192f);
+  color: var(--foreground, #ededed);
   font-family: "Inter", sans-serif;
   transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Apply Background to the Main Container */
+.bg-gradient {
+  background: linear-gradient(to bottom, #0a192f, #020c1b);
+}
+
+/* Ensure Full-Screen Coverage */
+.full-screen {
+  min-height: 100vh;
 }
